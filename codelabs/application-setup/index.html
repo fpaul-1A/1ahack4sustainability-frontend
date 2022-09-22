@@ -1,0 +1,475 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Application Setup</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="application-setup"
+                  title="Application Setup"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Intro" duration="1">
+        <p>Welcome to this CodeLab!</p>
+<p>Let&#39;s see how to set up the starter application provided by Amadeus</p>
+<p>At the end of this codelab, you will know how this application is structured and how to add new features</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prerequisites" duration="2">
+        <p>Before we start, make sure you have the following:</p>
+<ul>
+<li>your favorite device (PC or Mac)</li>
+<li>Internet access</li>
+<li><a href="https://nodejs.org" target="_blank">Node.js</a> installed</li>
+<li><a href="https://git-scm.com/" target="_blank">Git</a> installed</li>
+<li>an IDE supporting frontend technologies (VSCode, IntelliJ, ...)</li>
+<li>some knowledge about Angular framework (we recommend doing the <a href="https://angular.io/tutorial" target="_blank">Angular Tour of Heroes</a>)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Getting started" duration="3">
+        <p>Clone the repository <a href="https://github.com/amadeus4dev-events/1ahack4sustainability-frontend" target="_blank">https://github.com/amadeus4dev-events/1ahack4sustainability-frontend</a></p>
+<pre><code language="language-shell" class="language-shell">git clone https://github.com/amadeus4dev-events/1ahack4sustainability-frontend
+</code></pre>
+<p>Move inside the created folder</p>
+<pre><code language="language-shell" class="language-shell">cd 1ahack4sustainability-frontend
+</code></pre>
+<p>Install the dependencies using npm (included with Node.js)</p>
+<pre><code language="language-shell" class="language-shell">npm install
+</code></pre>
+<p>Run the app in dev mode</p>
+<pre><code language="language-shell" class="language-shell">npm start
+</code></pre>
+<p>Open your browser and navigate to <a href="http://localhost:4200" target="_blank">http://localhost:4200</a></p>
+<p>Click on random buttons on the page and observe that things are happening</p>
+<p>You are all set up!</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Presentation of the app" duration="4">
+        <p>The application is divided in 3 pages:</p>
+<ul>
+<li>home</li>
+<li>inspire me</li>
+<li>search</li>
+</ul>
+<h2 is-upgraded>Page: Home</h2>
+<p>This is the default landing page of the app.</p>
+<p>This page shows some text to explain the application</p>
+<p class="image-container"><img alt="home page" src="img\\b96a19b3d209cd2.png"></p>
+<h2 is-upgraded>Page: Inspire me</h2>
+<p>This page is used to choose a destination based on flavors (beach, nature, city) and green miles earned for each destination</p>
+<p class="image-container"><img alt="inspire page" src="img\\1a9046b543a54ce.png"></p>
+<p class="image-container"><img alt="inspire page 2" src="img\\4e49e530f2e4b8c2.png"></p>
+<aside class="special"><p>To get the activities for each destination, we are using Amadeus Self Service API - <a href="https://developers.amadeus.com/self-service/category/destination-content/api-doc/points-of-interest/api-reference" target="_blank">Points of Interest</a></p>
+</aside>
+<h2 is-upgraded>Page: Search</h2>
+<p>This page is used to find flights for specific origin and destination</p>
+<p class="image-container"><img alt="search page" src="img\\43af15ca7c8d1a94.png"></p>
+<aside class="special"><p>To get the list of locations in the autocomplete fields we are using Amadeus Self Service API - <a href="https://developers.amadeus.com/self-service/category/air/api-doc/airport-and-city-search/api-reference" target="_blank">Airport and City Search</a></p>
+</aside>
+<p>Once the search is validated, the flights are displayed bellow</p>
+<p class="image-container"><img alt="search page 2" src="img\\22a6670e68ea800e.png"></p>
+<aside class="special"><p>To get the list of flights we are using Amadeus Self Service API - <a href="https://developers.amadeus.com/self-service/category/air/api-doc/flight-offers-search/api-reference" target="_blank">Flight Offers Search</a></p>
+</aside>
+<p>The details of the selected offer can be viewed either in &#34;classic&#34; mode or in &#34;map&#34; mode</p>
+<p class="image-container"><img alt="search page 3" src="img\\afacb77381f0dec4.png"></p>
+<aside class="special"><p>The map is displayed using <a href="https://www.woosmap.com/" target="_blank">Woosmap</a> library</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Structure" duration="5">
+        <p>Now, let&#39;s see how the code is structured</p>
+<p>The project was generated using Angular CLI <code>ng new</code>. If you are already familiar with it, you should feel comfortable with the architecture</p>
+<p class="image-container"><img alt="app architecture" src="img\\2d73c09d6523df6d.png"></p>
+<p>Let&#39;s see what each of these folders do:</p>
+<ul>
+<li><code>.angular/</code>, <code>.git/</code>, <code>.idea/</code>, <code>.vscode/</code>: these are auto-generated folders, most likely you&#39;ll never have to do anything with them</li>
+<li><code>codelabs/</code>: this is where this document code is located, don&#39;t hesitate to check if you are curious of how this is generated</li>
+<li><code>dist/</code>: this is where the production app will be after you run <code>npm build</code></li>
+<li><code>node_modules/</code>: this is where npm installs all the dependencies of the app</li>
+<li><code>src/</code>: this is where the source code of the app is  <ul>
+<li><code>src/app/components/</code>: here are all the reusable components</li>
+<li><code>src/app/helpers/</code>: some helper methods</li>
+<li><code>src/app/pages/</code>: here are the lazy module and main component of each page / route</li>
+<li><code>src/app/pipe/</code>: here are all the reusable pipes</li>
+<li><code>src/app/services/</code>: here all the services that we use for example to make the calls to the API</li>
+<li><code>src/assets/</code>: all the runtime assets (images, fonts, ...)</li>
+<li><code>src/environments/</code>: these are used to set specific values depending on the build environment (development / production)</li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Adding new feature" duration="2">
+        <p>Now, let&#39;s add more stuff to this app</p>
+<p>We are going to create a new page that will be accessed when selecting a flight offer</p>
+<p>In this page we will display the weather for departure and arrival</p>
+<p>This is what we want to achieve: <img alt="app new feature" src="img\\66cd07729ee049ce.png"></p>
+<p>Let&#39;s get into it!</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Integrating third party API" duration="5">
+        <p>First we need to find an API that provides the data we want</p>
+<p>Let&#39;s use this one <a href="https://open-meteo.com/en" target="_blank">https://open-meteo.com/en</a>, it doesn&#39;t require an API key, so it will be easier to use. Also, it is free</p>
+<p>The format looks like the following:</p>
+<pre><code language="language-typescript" class="language-typescript">`https://api.open-meteo.com/v1/forecast?latitude=${lat}&amp;longitude=${lng}&amp;hourly=temperature_2m,weathercode&amp;start_date=${day}&amp;end_date=${day}`
+</code></pre>
+<p>To handle that, let&#39;s create a service using Angular CLI in the terminal:</p>
+<pre><code language="language-shell" class="language-shell">ng g service --name=services/weather/weather
+</code></pre>
+<p>We can now add the code to call the API in our new service:</p>
+<p><code>src/app/services/weather/weather.service.ts</code>:</p>
+<pre><code language="language-typescript" class="language-typescript">export interface WeatherResponse {
+  hourly: {
+    time: string[];
+    temperature_2m: number[];
+    weathercode: number[]
+  };
+  hourly_units: {
+    temperature_2m: string;
+  };
+}
+
+@Injectable({
+  providedIn: &#39;root&#39;
+})
+export class WeatherService {
+
+  /**
+   * API call to retrieve the weather forecast for a location on a specific day
+   */
+  public async getWeather(latitude: number, longitude: number, day: string, timezone: string): Promise&lt;WeatherResponse&gt; {
+      return (await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&amp;longitude=${longitude}&amp;hourly=temperature_2m,weathercode&amp;start_date=${day}&amp;end_date=${day}&amp;timezone=${timezone}`)).json();
+  }
+}
+</code></pre>
+<p>Now, we have a method to get the weather forecast, nice!</p>
+<p>Unfortunately, we need to send the <code>timezone</code> to the API, but we don&#39;t have that information :(</p>
+<p>You know how it works now... let&#39;s find an API to get that data</p>
+<p>This one looks just fine <a href="http://www.geonames.org/export/web-services.html#timezone" target="_blank">http://www.geonames.org/export/web-services.html#timezone</a>, we need to create an API key for this one (username in that case)</p>
+<aside class="special"><p>We&#39;ve already created one that you can use <code>test_1a_2022</code></p>
+</aside>
+<p>The format looks like the following:</p>
+<pre><code language="language-typescript" class="language-typescript">`http://api.geonames.org/timezoneJSON?lat=${latitude}&amp;lng=${longitude}&amp;date=${day}&amp;username=test_1a_2022`
+</code></pre>
+<p>We could create a new service for that but for simplicity, let&#39;s just update our service:</p>
+<p><code>src/app/services/weather/weather.service.ts</code>:</p>
+<pre><code language="language-typescript" class="language-typescript">// ...
+
+export interface TimezoneResponse {
+  timezoneId: string;
+}
+
+@Injectable({
+  providedIn: &#39;root&#39;
+})
+export class WeatherService {
+
+  // ...
+
+  /**
+   * API call to retrieve the timezone for location
+   */
+  public async getTimezone(latitude: number, longitude: number, day: string): Promise&lt;TimezoneResponse&gt; {
+    return (await fetch(`http://api.geonames.org/timezoneJSON?lat=${latitude}&amp;lng=${longitude}&amp;date=${day}&amp;username=test_1a_2022`)).json();
+  }
+}
+</code></pre>
+<p>Now we want a method to get the weather data only at the hour of our flight end point (location + datetime)</p>
+<p><code>src/app/services/weather/weather.service.ts</code>:</p>
+<pre><code language="language-typescript" class="language-typescript">export class WeatherService {
+  constructor(private locationsService: LocationsService, private flightOffersService: FlightOffersService) {}
+
+  /**
+   * Chain API calls to get the weather forecast for a specific end point (location + datetime)
+   */
+  public async getWeatherForEndPoint(endPoint: FlightEndPoint) {
+      const {latitude, longitude} = (await this.locationsService.getCoordinatesForAirportWithWoosmap(endPoint.iataCode))!;
+      const day = JSON.stringify(endPoint.at).substring(1, 11);
+      const hour = `${JSON.stringify(endPoint.at).substring(1, 14)}:00`;
+      const timezone = await this.getTimezone(latitude!, longitude!, day);
+      const response = await this.getWeather(latitude!, longitude!, day, timezone.timezoneId);
+      const index = response.hourly.time.findIndex((t) =&gt; t === hour);
+      return {
+          temperature: response.hourly.temperature_2m[index],
+          weatherCode: response.hourly.weathercode[index],
+          weatherUnit: response.hourly_units.temperature_2m
+      };
+  }
+  
+  // ...
+}
+</code></pre>
+<p>Basically, we are chaining 3 calls:</p>
+<ul>
+<li><code>this.locationsService.getCoordinatesForAirport2</code> to get the latitude, longitude</li>
+<li><code>this.getTimezone</code> to get the timezone of these coordinates</li>
+<li><code>this.getWeather</code> to get the weather forecast</li>
+</ul>
+<p>Once we have the data, we filter the results to keep only the hour of departure/arrival of the flight</p>
+<p>Now, let&#39;s use this new method in our new page</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Creating a new page" duration="5">
+        <p>Let&#39;s see how we can create a new page on this application</p>
+<p>We want to create a new route on path <a href="http://localhost:4200/weather" target="_blank">http://localhost:4200/weather</a></p>
+<h2 is-upgraded>Generate route</h2>
+<p>First we are going to generate the new route using Angular CLI in the terminal:</p>
+<pre><code language="language-shell" class="language-shell">ng g module --module=app --routing=true --route=weather --name=pages/weather
+</code></pre>
+<p>This command generates all the files needed for this new route (one component and one lazy module)</p>
+<p>This also updates the application routing module to include this new route</p>
+<p class="image-container"><img alt="new page: generated files" src="img\\f3cd293827db6a87.png"></p>
+<h2 is-upgraded>Update navigation</h2>
+<p>Now, we want to update the NavigationComponent to include the new route in the UI</p>
+<p>For that we can modify the file</p>
+<p><code>src/app/components/navigation/navigation.component.ts</code>:</p>
+<pre><code language="language-typescript" class="language-typescript">export class NavigationComponent {
+
+    navigationItems = [
+        {label: &#39;Home&#39;, icon: &#39;home&#39;, path: &#39;/home&#39;},
+        {label: &#39;Inspire me&#39;, icon: &#39;emoji_objects&#39;, path: &#39;/inspire&#39;},
+        {label: &#39;Find flights&#39;, icon: &#39;search&#39;, path: &#39;/search&#39;},
+
+        // Add new route here:
+        {label: &#39;Weather&#39;, icon: &#39;sunny&#39;, path: &#39;/weather&#39;}
+    ];
+}
+</code></pre>
+<p>And that&#39;s it!</p>
+<p>Now you can see your new page and navigate to it:</p>
+<p class="image-container"><img alt="how to create page" src="img\\c10ab600ca54f415.png"></p>
+<p>Let&#39;s also create a button in flight details component to select a flight and navigate to our new page</p>
+<p><code>src/app/components/flight-details/flight-details.component.html</code></p>
+<pre><code language="language-html" class="language-html">&lt;div class=&#34;container&#34; *ngIf=&#34;flightItinerary&#34;&gt;
+  ...
+
+  &lt;button mat-flat-button color=&#34;primary&#34; [routerLink]=&#34;&#39;/weather&#39;&#34; [state]=&#34;{flightItinerary: flightItinerary}&#34;&gt;Select&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Don&#39;t forget to import the router module in your component ! We&#39;ll use the state to pass the selected offer data to the new page</p>
+<p class="image-container"><img alt="how to new button" src="img\\9b8ae5f1560843da.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Creating a new component" duration="5">
+        <p>Let&#39;s create a new component</p>
+<p>First, we want to create a module to isolate the component and make it reusable</p>
+<p>This module will contain the imports of all the dependencies needed for this component</p>
+<pre><code language="language-shell" class="language-shell">ng g module --name=components/location-weather
+</code></pre>
+<p>Now, we can create the component and declare it in our module</p>
+<pre><code language="language-shell" class="language-shell">ng g component --name=components/location-weather --module=components/location-weather --export
+</code></pre>
+<p class="image-container"><img alt="how to create component" src="img\\f291daa3476ae6be.png"></p>
+<aside class="special"><p>To use this component you can directly type the selector <code>app-location-weather</code> in your template and your IDE should update the imports automatically</p>
+</aside>
+<aside class="warning"><p>If not, you need to import the new component module in the module of the component using it</p>
+</aside>
+<p>Let&#39;s add some code in our new component to use our service</p>
+<p><code>src/app/components/location-weather/location-weather.component.ts</code>:</p>
+<pre><code language="language-typescript" class="language-typescript">export class LocationWeatherComponent implements OnInit {
+
+  @Input()
+  endPoint!: FlightEndPoint;
+
+  weather$!: Observable&lt;{temperature: number, weatherCode: number, weatherUnit: string}&gt;;
+
+  isLoading$!: Observable&lt;boolean&gt;;
+
+  constructor(private weatherService: WeatherService) {
+  }
+
+  ngOnInit(): void {
+    this.weather$ = from(this.weatherService.getWeatherForEndPoint(this.endPoint)).pipe(shareReplay(1));
+    this.isLoading$ = merge(of(true), this.weather$.pipe(map(() =&gt; false)));
+  }
+  
+  getIconForWeatherCode(weatherCode: number) {
+    if (weatherCode &lt; 1) return &#39;sunny&#39;;
+    if (weatherCode &lt; 4) return &#39;partly_cloudy_day&#39;;
+    else if (weatherCode &lt; 58) return &#39;cloudy&#39;;
+    else if (weatherCode &lt; 68) return &#39;rainy&#39;;
+    else if (weatherCode &lt; 78) return &#39;snowing&#39;;
+    else if (weatherCode &lt; 83) return &#39;rainy&#39;;
+    else if (weatherCode &lt; 87) return &#39;snowing&#39;;
+    else return &#39;thunderstorm&#39;;
+  }
+
+  getLabelForWeatherCode(weatherCode: number) {
+    if (weatherCode &lt; 1) return &#39;Clear sky&#39;;
+    else if (weatherCode &lt; 4) return &#39;Mainly clear, partly cloudy, and overcast&#39;;
+    else if (weatherCode &lt; 49) return &#39;Fog and depositing rime fog&#39;;
+    else if (weatherCode &lt; 56) return &#39;Drizzle: Light, moderate, and dense intensity&#39;;
+    else if (weatherCode &lt; 58) return &#39;Freezing Drizzle: Light and dense intensity&#39;;
+    else if (weatherCode &lt; 66) return &#39;Rain: Slight, moderate and heavy intensity&#39;;
+    else if (weatherCode &lt; 68) return &#39;Freezing Rain: Light and heavy intensity&#39;;
+    else if (weatherCode &lt; 76) return &#39;Snow fall: Slight, moderate, and heavy intensity&#39;;
+    else if (weatherCode &lt; 78) return &#39;Snow grains&#39;;
+    else if (weatherCode &lt; 83) return &#39;Rain showers: Slight, moderate, and violent&#39;;
+    else if (weatherCode &lt; 87) return &#39;Snow showers slight and heavy&#39;;
+    else if (weatherCode &lt; 96) return &#39;Thunderstorm: Slight or moderate&#39;;
+    else return &#39;Thunderstorm with slight and heavy hail&#39;;
+  }
+}
+</code></pre>
+<p>The component take the flight end point as @Input, it exposes 2 Observables:</p>
+<ul>
+<li><code>weather$</code> will emit the weather data associated to our end point using our service</li>
+<li><code>isLoading$</code> will emit a boolean to know when the call are ongoing or finished</li>
+</ul>
+<p>Now, let&#39;s update our template to use those</p>
+<p><code>src/app/components/location-weather/location-weather.component.html</code>:</p>
+<pre><code language="language-html" class="language-html">&lt;mat-card&gt;
+  &lt;div mat-card-title&gt;&#123;&#123;endPoint.iataCode}}, &#123;&#123;endPoint.at | date: &#39;E dd MMM HH:mm&#39;}}&lt;/div&gt;
+  &lt;div mat-card-content&gt;
+    &lt;mat-spinner *ngIf=&#34;isLoading$ | async&#34; [color]=&#34;&#39;primary&#39;&#34;&gt;&lt;/mat-spinner&gt;
+    &lt;ng-container *ngIf=&#34;weather$ | async as weather&#34;&gt;
+      &lt;div class=&#34;temperature&#34;&gt;&lt;mat-icon [inline]=&#34;true&#34; [fontSet]=&#34;&#39;material-symbols-sharp&#39;&#34;&gt;&#123;&#123;getIconForWeatherCode(weather.weatherCode)}}&lt;/mat-icon&gt; | &#123;&#123;weather.temperature}} &#123;&#123;weather.weatherUnit}}&lt;/div&gt;
+      &lt;div&gt;&#123;&#123;getLabelForWeatherCode(weather.weatherCode)}}&lt;/div&gt;
+    &lt;/ng-container&gt;
+  &lt;/div&gt;
+&lt;/mat-card&gt;
+</code></pre>
+<aside class="special"><p>We are using Angular Material components here. If you are unfamiliar with it, you may want to take a look at the documentation <a href="https://material.angular.io/" target="_blank">https://material.angular.io/</a></p>
+</aside>
+<p>Note that in the example above, for simplicity we directly used the component methods to compute the data to display. This is actually not a good practice. Angular is not able to check if the application will return the same data for the same input. Hence, it will re-evaluate it on each round of the Angular lifecycle whether the parameters changed or not.</p>
+<p>If you want to avoid this pitfall and if you methods is predictable and always returns the same value for the same parameters,<br> you can move the logic of the method inside an Angular Pipe.</p>
+<p>Let&#39;s see how we can update the weather label to make it better.</p>
+<p><code>src/app/components/location-weather/location-weather.component.html</code>:</p>
+<pre><code language="language-html" class="language-html">&lt;mat-card&gt;
+  &lt;div mat-card-title&gt;&#123;&#123;endPoint.iataCode}}, &#123;&#123;endPoint.at | date: &#39;E dd MMM HH:mm&#39;}}&lt;/div&gt;
+  &lt;div mat-card-content&gt;
+    &lt;mat-spinner *ngIf=&#34;isLoading$ | async&#34; [color]=&#34;&#39;primary&#39;&#34;&gt;&lt;/mat-spinner&gt;
+    &lt;ng-container *ngIf=&#34;weather$ | async as weather&#34;&gt;
+      &lt;div class=&#34;temperature&#34;&gt;&lt;mat-icon [inline]=&#34;true&#34; [fontSet]=&#34;&#39;material-symbols-sharp&#39;&#34;&gt;&#123;&#123;getIconForWeatherCode(weather.weatherCode)}}&lt;/mat-icon&gt; | &#123;&#123;weather.temperature}} &#123;&#123;weather.weatherUnit}}&lt;/div&gt;
+      &lt;div&gt;&#123;&#123;weather.weatherCode | weatherLabel}}&lt;/div&gt;
+    &lt;/ng-container&gt;
+  &lt;/div&gt;
+&lt;/mat-card&gt;
+</code></pre>
+<p><code>src/app/pipe/weather-label/weather-label.pipe.ts</code>:</p>
+<pre><code language="language-typescript" class="language-typescript">import { PipeTransform } from &#39;@angular/core&#39;;
+
+@Pipe({
+  name: &#39;weatherLabel&#39;
+})
+export class WeatherLabelPipe implements PipeTransform {
+  transform(weatherCode) {
+      if (weatherCode &lt; 1) return &#39;Clear sky&#39;;
+      else if (weatherCode &lt; 4) return &#39;Mainly clear, partly cloudy, and overcast&#39;;
+      else if (weatherCode &lt; 49) return &#39;Fog and depositing rime fog&#39;;
+      else if (weatherCode &lt; 56) return &#39;Drizzle: Light, moderate, and dense intensity&#39;;
+      else if (weatherCode &lt; 58) return &#39;Freezing Drizzle: Light and dense intensity&#39;;
+      else if (weatherCode &lt; 66) return &#39;Rain: Slight, moderate and heavy intensity&#39;;
+      else if (weatherCode &lt; 68) return &#39;Freezing Rain: Light and heavy intensity&#39;;
+      else if (weatherCode &lt; 76) return &#39;Snow fall: Slight, moderate, and heavy intensity&#39;;
+      else if (weatherCode &lt; 78) return &#39;Snow grains&#39;;
+      else if (weatherCode &lt; 83) return &#39;Rain showers: Slight, moderate, and violent&#39;;
+      else if (weatherCode &lt; 87) return &#39;Snow showers slight and heavy&#39;;
+      else if (weatherCode &lt; 96) return &#39;Thunderstorm: Slight or moderate&#39;;
+      else return &#39;Thunderstorm with slight and heavy hail&#39;;
+  }
+}
+</code></pre>
+<p>Do not forget to export this new pipe in a module and to import it in your weather component module.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Wrapping up" duration="2">
+        <p>Last step, let&#39;s update our page component to use this new component</p>
+<p><code>src/app/pages/weather/weather.component.ts</code>:</p>
+<pre><code language="language-typescript" class="language-typescript">export class WeatherComponent {
+
+  flightItinerary: Itineraries;
+
+  constructor(router: Router) {
+    this.flightItinerary = router.getCurrentNavigation()?.extras.state?.[&#39;flightItinerary&#39;];
+  }
+}
+</code></pre>
+<p><code>src/app/pages/weather/weather.component.html</code>:</p>
+<pre><code language="language-html" class="language-html">&lt;ng-container *ngIf=&#34;flightItinerary&#34;&gt;
+  &lt;app-location-weather [endPoint]=&#34;flightItinerary.segments[0].departure!&#34;&gt;&lt;/app-location-weather&gt;
+  &lt;app-location-weather [endPoint]=&#34;flightItinerary.segments[flightItinerary.segments.length - 1].arrival!&#34;&gt;&lt;/app-location-weather&gt;
+&lt;/ng-container&gt;
+</code></pre>
+<p>We retrieve the flight itinerary from router state and use our new component to display the weather for departure and arrival</p>
+<p>Everything should be working now, well done</p>
+<p class="image-container"><img alt="app new feature without css" src="img\\95e28edd0394856.png"></p>
+<p>Close enough, we just need to add some css</p>
+<p><code>src/app/components/location-weather/location-weather.component.scss</code>:</p>
+<pre><code language="language-scss" class="language-scss">.temperature {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+</code></pre>
+<p><code>src/app/pages/weather/weather.component.scss</code>:</p>
+<pre><code language="language-scss" class="language-scss">:host {
+  padding: 2rem;
+  display: block;
+}
+
+app-location-weather {
+  margin-bottom: 1rem;
+  display: block;
+}
+</code></pre>
+<p>Ok now it&#39;s really finished</p>
+<p class="image-container"><img alt="app new feature with css" src="img\\66cd07729ee049ce.png"></p>
+<p>Mission accomplished!</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Conclusion" duration="1">
+        <p>We hope you now have everything you need to use this app and make it more awesome</p>
+<p>Enjoy the event!</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
