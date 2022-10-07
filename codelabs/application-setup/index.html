@@ -64,7 +64,18 @@
 </code></pre>
 <p>Open your browser and navigate to <a href="http://localhost:4200" target="_blank">http://localhost:4200</a></p>
 <p>Click on random buttons on the page and observe that things are happening</p>
-<p>You are all set up!</p>
+<aside class="warning"><p>You may notice that some calls are failing, we need to setup the API keys</p>
+</aside>
+<p>Open the file <code>src/app/app.config.ts</code></p>
+<ul>
+<li>create an account at <a href="https://developers.amadeus.com/register" target="_blank">https://developers.amadeus.com/register</a> and copy your keys into <code>amadeusApiConfig.gatewayClientId</code> and <code>amadeusApiConfig.gatewayClientPrivate</code></li>
+<li>create an account at <a href="https://www.woosmap.com/sign_up" target="_blank">https://www.woosmap.com/sign_up</a></li>
+</ul>
+<p>create a project with Maps and Localities APIs</p>
+<p>In Security tab, add a domain to allow <code>localhost</code> and copy your public key into <code>woosmapApiConfig.apiKey</code></p>
+<p>After your save, you can directly reload the page and the calls should now be working.</p>
+<aside class="special"><p>You are all set up!</p>
+</aside>
 
 
       </google-codelab-step>
@@ -144,7 +155,9 @@
 <p>The format looks like the following:</p>
 <pre><code language="language-typescript" class="language-typescript">`https://api.open-meteo.com/v1/forecast?latitude=${lat}&amp;longitude=${lng}&amp;hourly=temperature_2m,weathercode&amp;start_date=${day}&amp;end_date=${day}`
 </code></pre>
-<p>To handle that, let&#39;s create a service using Angular CLI in the terminal:</p>
+<p>To handle that, let&#39;s create a service using Angular CLI in the terminal</p>
+<aside class="special"><p>If you never used Angular CLI before, you can install it simply by running <code>npm install -g @angular/cli</code> once</p>
+</aside>
 <pre><code language="language-shell" class="language-shell">ng g service --name=services/weather/weather
 </code></pre>
 <p>We can now add the code to call the API in our new service:</p>
